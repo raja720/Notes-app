@@ -31,6 +31,7 @@ function Login() {
         <input name="password" type="password" placeholder="Password" value={form.password} onChange={handleChange} />
         <button type="submit">Login</button>
       </form>
+      <p><Link to="/forgot-password">Forgot password?</Link></p>
       {error && <p className="error">{error}</p>}
       <p>Don't have an account? <Link to="/signup">Signup</Link></p>
     </div>

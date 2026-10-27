@@ -169,3 +169,7 @@ a {
   margin-left: auto;
   margin-right: auto;
 }
+.success {
+  color: #15803d;
+  font-size: 14px;
+}
