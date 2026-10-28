@@ -88,20 +88,16 @@ const forgotPassword = async (req, res) => {
     user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
     await user.save();
 
-    const resetUrl = `http://localhost:5173/reset-password/${resetToken}`;
+    const resetUrl = `${process.env.CLIENT_URL || "http://localhost:5173"}/reset-password/${resetToken}`;
     console.log("Password reset link:", resetUrl);
 
- try{
-
-   await sendEmail({
-     to: user.email,
-     subject: "Password reset request",
-     text: `Click the link below to reset your password. It is valid for 15 minutes.\n\n${resetUrl}`,
+    sendEmail({
+      to: user.email,
+      subject: "Password reset request",
+      text: `Click the link below to reset your password. It is valid for 15 minutes.\n\n${resetUrl}`,
+    }).catch((emailError) => {
+      console.log("Email failed:", emailError.message);
     });
-  }catch (emailError){
-    console.log("Email failed",emailError.message)
-
-  }
 
     res.status(200).json({ message });
 
