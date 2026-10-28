@@ -173,3 +173,26 @@ a {
   color: #15803d;
   font-size: 14px;
 }
+
+@media (max-width: 600px) {
+  .container {
+    margin: 20px auto;
+  }
+
+  .auth-card {
+    margin: 32px 16px;
+    padding: 20px;
+  }
+
+  .top-bar h2 {
+    font-size: 20px;
+  }
+
+  .form-card {
+    max-width: 100%;
+  }
+
+  .actions {
+    flex-wrap: wrap;
+  }
+}
