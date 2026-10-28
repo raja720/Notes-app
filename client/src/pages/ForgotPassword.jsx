@@ -12,7 +12,7 @@ function ForgotPassword() {
     e.preventDefault();
     setError("");
     setMessage("");
-    setLoading(true)
+    setLoading(true);
     try {
       const res = await API.post("/auth/forgot-password", { email });
       setMessage(res.data.message);
@@ -21,28 +21,27 @@ function ForgotPassword() {
     } finally {
       setLoading(false);
     }
-  }
-};
+  };
 
-return (
-  <div className="auth-card">
-    <h2>Forgot Password</h2>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button type="submit" disabled={loading}>
-        {loading ? "Sending..." : "Send reset link"}
-      </button>
-    </form>
-    {message && <p className="success">{message}</p>}
-    {error && <p className="error">{error}</p>}
-    <p><Link to="/login">Back to login</Link></p>
-  </div>
-);
-
+  return (
+    <div className="auth-card">
+      <h2>Forgot Password</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <button type="submit" disabled={loading}>
+          {loading ? "Sending..." : "Send reset link"}
+        </button>
+      </form>
+      {message && <p className="success">{message}</p>}
+      {error && <p className="error">{error}</p>}
+      <p><Link to="/login">Back to login</Link></p>
+    </div>
+  );
+}
 
 export default ForgotPassword;
